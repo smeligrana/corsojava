@@ -1,6 +1,7 @@
 package corso.rubrica;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import corso.rubrica.bean.Contatto;
@@ -23,6 +24,10 @@ public class ExecutorCmd {
 		
 		case "help":
 			rtn = help(arguments);
+			break;
+		
+		case "delete":
+			rtn = delete(arguments);
 			break;
 
 		default:
@@ -53,6 +58,7 @@ public class ExecutorCmd {
 		
 		sb.append("Elenco dei comandi \n");
 		sb.append("\t add cognome nome numero \n");
+		sb.append("\t delete cognome\n");
 		sb.append("\t list \n");
 		sb.append("\t quit \n");
 		
@@ -68,6 +74,31 @@ public class ExecutorCmd {
 		Contatto contatto = new Contatto(arguments[2], arguments[1], arguments[3]);
 		contatti.add(0, contatto);
 		rtn = "Ok, contatto aggiunto con successo";
+		
+		return rtn;
+	}
+	
+	private String delete(String[] arguments){
+		String rtn;
+		if(arguments.length != 2){
+			return  "Errore nei parametri";
+		}
+		
+		boolean cancellato = false;
+		Iterator<Contatto> it = contatti.iterator();
+		while (it.hasNext()) {
+			Contatto contatto = it.next();
+			if(contatto.getCognome().equals(arguments[1])){
+				it.remove();
+				cancellato = true;
+			}
+		}
+		
+		if(cancellato){
+			rtn = "Ok, contatto cancellato con successo";
+		} else {
+			rtn = "contatto non trovato";
+		}
 		
 		return rtn;
 	}

@@ -37,4 +37,5 @@ public class Contatto {
 		this.numero = numero;
 	}
 
+	
 }
