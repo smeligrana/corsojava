@@ -85,14 +85,22 @@ public class ExecutorCmd {
 		}
 		
 		boolean cancellato = false;
-		Iterator<Contatto> it = contatti.iterator();
-		while (it.hasNext()) {
-			Contatto contatto = it.next();
+		for (int i=0; i< contatti.size(); i++) {
+			Contatto contatto = contatti.get(i);
 			if(contatto.getCognome().equals(arguments[1])){
-				it.remove();
+				contatti.remove(contatto);
 				cancellato = true;
+				i--;
 			}
 		}
+//		Iterator<Contatto> it = contatti.iterator();
+//		while (it.hasNext()) {
+//			Contatto contatto = it.next();
+//			if(contatto.getCognome().equals(arguments[1])){
+//				it.remove();
+//				cancellato = true;
+//			}
+//		}
 		
 		if(cancellato){
 			rtn = "Ok, contatto cancellato con successo";
