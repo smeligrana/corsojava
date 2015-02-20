@@ -52,7 +52,8 @@ public class ExecutorCmd {
 		StringBuilder sb = new StringBuilder();
 		
 		sb.append("Elenco dei comandi \n");
-		sb.append("\t add nome cognome numero \n");
+		sb.append("\t add cognome nome numero \n");
+		sb.append("\t list \n");
 		sb.append("\t quit \n");
 		
 		return sb.toString();
@@ -61,11 +62,11 @@ public class ExecutorCmd {
 	private String add(String[] arguments){
 		String rtn;
 		if(arguments.length != 4){
-			rtn = "Errore nei parametri";
+			return  "Errore nei parametri";
 		}
 		
-		Contatto contatto = new Contatto(arguments[1], arguments[2], arguments[3]);
-		contatti.add(contatto);
+		Contatto contatto = new Contatto(arguments[2], arguments[1], arguments[3]);
+		contatti.add(0, contatto);
 		rtn = "Ok, contatto aggiunto con successo";
 		
 		return rtn;
