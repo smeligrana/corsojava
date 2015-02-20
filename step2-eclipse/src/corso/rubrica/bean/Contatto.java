@@ -5,6 +5,7 @@ public class Contatto {
 	private String cognome;
 	private String numero;
 	
+
 	public Contatto(String nome, String cognome, String numero) {
 		super();
 		this.nome = nome;
@@ -35,7 +36,5 @@ public class Contatto {
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-	
-	
-	
+
 }
