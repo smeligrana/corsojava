@@ -50,6 +50,14 @@ public class Persona {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	
+	public Set<Indirizzo> getIndirizzi() {
+		return indirizzi;
+	}
+
+	public void setIndirizzi(Set<Indirizzo> indirizzi) {
+		this.indirizzi = indirizzi;
+	}
 
 	@Override
 	public String toString() {
