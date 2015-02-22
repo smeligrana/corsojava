@@ -212,4 +212,27 @@ public class SimpleSelect {
 			session.close();
 		}
 	}
+	
+	@Test
+	public void listPersoneIndirizzoMultiTuplesHql() {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			List<Object[]> tuples = session.createQuery("select p, i  FROM Persona p inner join p.indirizzi i").list();
+			for (Object[] tupla : tuples) {
+				System.out.println(tupla[0]);
+				System.out.println(tupla[1]);
+			}
+			tx.commit();
+			
+			Assert.assertEquals(2, tuples.size());
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
 }
