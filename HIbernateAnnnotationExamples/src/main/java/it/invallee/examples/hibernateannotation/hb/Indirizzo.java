@@ -71,6 +71,13 @@ public class Indirizzo {
 	public void setComune(String comune) {
 		this.comune = comune;
 	}
+
+	@Override
+	public String toString() {
+		return "Indirizzo [idIndirizzo=" + idIndirizzo + ", persona=" + persona
+				+ ", tipoIndirizzo=" + tipoIndirizzo + ", via=" + via
+				+ ", comune=" + comune + "]";
+	}
 	
 	
 }
