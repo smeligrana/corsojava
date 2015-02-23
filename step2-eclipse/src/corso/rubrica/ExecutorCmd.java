@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import corso.rubrica.bean.Contatto;
+import corso.rubrica.helpers.ContattiHelper;
 
 public class ExecutorCmd {
 	private List<Contatto> contatti = new ArrayList<>();
@@ -29,6 +30,14 @@ public class ExecutorCmd {
 		case "delete":
 			rtn = delete(arguments);
 			break;
+		
+		case "save":
+			rtn = save(arguments);
+			break;
+			
+		case "read":
+			rtn = read(arguments);
+			break;
 
 		default:
 			rtn = "errore comando sconosciuto";
@@ -38,6 +47,30 @@ public class ExecutorCmd {
 		return rtn;
 	}
 	
+	private String read(String[] arguments) {
+		String msg;
+		try {
+			contatti = ContattiHelper.read( "contatti.xml");
+			msg = "Lettura dei contatti da filesystem avventa con successo";
+		} catch (Exception e) {
+			e.printStackTrace();
+			msg = "Errore durante la lettura dei contatti da filesystem";
+		}
+		return msg;
+	}
+
+	private String save(String[] arguments) {
+		String msg;
+		try {
+			ContattiHelper.write(contatti, "contatti.xml");
+			msg = "Salvataggio avvenuto con successo";
+		} catch (Exception e) {
+			e.printStackTrace();
+			msg = "Errore durante il salvataggio";
+		}
+		return msg;
+	}
+
 	private String list(String[] arguments) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("Elenco contatti: \n");
@@ -60,6 +93,8 @@ public class ExecutorCmd {
 		sb.append("\t add cognome nome numero \n");
 		sb.append("\t delete cognome\n");
 		sb.append("\t list \n");
+		sb.append("\t save \n");
+		sb.append("\t read \n");
 		sb.append("\t quit \n");
 		
 		return sb.toString();

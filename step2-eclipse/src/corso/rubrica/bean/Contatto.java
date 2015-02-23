@@ -4,7 +4,10 @@ public class Contatto {
 	private String nome;
 	private String cognome;
 	private String numero;
-	
+
+	public Contatto() {
+		super();
+	}
 
 	public Contatto(String nome, String cognome, String numero) {
 		super();
