@@ -14,5 +14,18 @@
     </void>
    </object>
   </void>
+  <void method="add">
+   <object class="corso.rubrica.bean.Contatto">
+    <void property="cognome">
+     <string>meligrana</string>
+    </void>
+    <void property="nome">
+     <string>alice</string>
+    </void>
+    <void property="numero">
+     <string>33453</string>
+    </void>
+   </object>
+  </void>
  </object>
 </java>
