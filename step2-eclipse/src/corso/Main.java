@@ -8,7 +8,6 @@ public class Main {
 		hw.print();
 		
 		hw.increment();
-//Commento
 	}
 
 }
