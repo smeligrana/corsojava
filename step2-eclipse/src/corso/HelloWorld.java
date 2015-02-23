@@ -15,11 +15,7 @@ public class HelloWorld {
 	}
 
 	public void increment() {
-<<<<<<< HEAD
-		// MOdifica 3
-=======
-		// MOdifica 2
->>>>>>> branch 'master' of https://github.com/smeligrana/corsojava
+
 
 	}
 }
