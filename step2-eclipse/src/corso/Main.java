@@ -8,9 +8,7 @@ public class Main {
 		hw.print();
 		hw.increment();
 		
-		// LOCAL
-		
-		// REMOTE
+		// modifica 1
 	}
 
 }
