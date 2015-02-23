@@ -23,7 +23,7 @@
      <string>alice</string>
     </void>
     <void property="numero">
-     <string>1111</string>
+     <string>1111</string> 
     </void>
    </object>
   </void>
