@@ -1,8 +1,1 @@
-bbbbb
-aaaaa
-rrrrrrrrrrrrrrrr
-sdsdsds
-rrrrrrrrrrrrrr
-bbbbb
-
-aaaaa
+Creo il conflitto sul repository remoto
