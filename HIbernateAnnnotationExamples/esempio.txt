@@ -1,7 +1,11 @@
 bbbbb
 aaaaa
+<<<<<<< HEAD
 sdsdsds
 s
 dsdsdsd
 
 sdsdsdsds
+=======
+ccccc
+>>>>>>> branch 'master' of https://github.com/smeligrana/corsojava.git
