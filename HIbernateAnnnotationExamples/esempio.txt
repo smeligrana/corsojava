@@ -2,6 +2,9 @@ bbbbb
 aaaaa
 sdsdsds
 ccccc
+<<<<<<< HEAD
 aasasasasas
+=======
+>>>>>>> branch 'master' of https://github.com/smeligrana/corsojava.git
 ed adesso
 sssss
