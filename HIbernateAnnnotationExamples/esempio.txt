@@ -1,1 +1,2 @@
 Creo il conflitto con un cambiamento locale
+Creo il conflitto sul repository remoto
