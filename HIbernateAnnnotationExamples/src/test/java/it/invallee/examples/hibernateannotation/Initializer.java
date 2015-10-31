@@ -1,20 +1,20 @@
 package it.invallee.examples.hibernateannotation;
 
-import it.invallee.examples.hibernateannotation.hb.Indirizzo;
-import it.invallee.examples.hibernateannotation.hb.Persona;
-import it.invallee.examples.hibernateannotation.hb.TipoIndirizzo;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.Configuration;
+
+import it.invallee.examples.hibernateannotation.hb.Indirizzo;
+import it.invallee.examples.hibernateannotation.hb.Persona;
+import it.invallee.examples.hibernateannotation.hb.TipoIndirizzo;
 
 public class Initializer {
 	public SessionFactory setUp() {
 		SessionFactory factory = null;
 		try {
-			factory = new AnnotationConfiguration()
+			factory = new Configuration()
 					.configure()
 //					.addPackage("it.invallee.examples.hibernateannotation.hb")
 					.addAnnotatedClass(Persona.class).addAnnotatedClass(Indirizzo.class).addAnnotatedClass(TipoIndirizzo.class)

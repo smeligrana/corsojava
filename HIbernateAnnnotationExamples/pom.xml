@@ -4,9 +4,9 @@
 	<groupId>it.invallee.examples</groupId>
 	<artifactId>HIbernateAnnnotationExamples</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+	
 	<dependencies>
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate</artifactId>
 			<version>3.5.3-Final</version>
@@ -16,19 +16,26 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-annotations</artifactId>
-			<version>3.5.3-Final</version>
+			<<version>3.5.3-Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
 			<version>3.5.3-Final</version>
-		</dependency>
+		</dependency> -->
 
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.oracle</groupId>
 			<artifactId>ojdbc14</artifactId>
 			<version>10.2.0.4</version>
+		</dependency> -->
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.0.3.Final</version>
 		</dependency>
+				
 
 		<dependency>
 			<groupId>hsqldb</groupId>
