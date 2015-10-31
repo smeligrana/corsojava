@@ -11,29 +11,33 @@ import it.invallee.examples.hibernateannotation.hb.Persona;
 import it.invallee.examples.hibernateannotation.hb.TipoIndirizzo;
 
 public class Initializer {
+	private static SessionFactory factory = null;
+
 	public SessionFactory setUp() {
-		SessionFactory factory = null;
-		try {
-			factory = new Configuration()
-					.configure()
-//					.addPackage("it.invallee.examples.hibernateannotation.hb")
-					.addAnnotatedClass(Persona.class).addAnnotatedClass(Indirizzo.class).addAnnotatedClass(TipoIndirizzo.class)
-					.buildSessionFactory();
-		} catch (Throwable ex) {
-			System.err.println("Failed to create sessionFactory object." + ex);
-			throw new ExceptionInInitializerError(ex);
+		if (factory == null) {
+			// SessionFactory factory = null;
+			try {
+				factory = new Configuration().configure()
+						// .addPackage("it.invallee.examples.hibernateannotation.hb")
+						.addAnnotatedClass(Persona.class).addAnnotatedClass(Indirizzo.class)
+						.addAnnotatedClass(TipoIndirizzo.class).buildSessionFactory();
+			} catch (Throwable ex) {
+				System.err.println("Failed to create sessionFactory object." + ex);
+				throw new ExceptionInInitializerError(ex);
+			}
+
+			Long idPersona1 = addPersona("Meligrana", "Sergio", factory);
+			addIndirizzo("Neyran Dessus 65A", "Brissogne", idPersona1, factory);
+			addIndirizzo("Via Che Guevara 7", "Drapia", idPersona1, factory);
+
+			addPersona("Meligrana", "Alice", factory);
+			addPersona("Meligrana", "Arianna", factory);
+
+			System.out.println("Inizializzazione terminata");
 		}
-		
-		Long idPersona1 = addPersona("Meligrana", "Sergio", factory);
-		addIndirizzo("Neyran Dessus 65A", "Brissogne", idPersona1, factory);
-		addIndirizzo("Via Che Guevara 7", "Drapia", idPersona1, factory);
-		
-		addPersona("Meligrana", "Alice", factory);
-		addPersona("Meligrana", "Arianna", factory);
-		
 		return factory;
 	}
-	
+
 	public Long addPersona(String cognome, String nome, SessionFactory factory) {
 		Session session = factory.openSession();
 		Transaction tx = null;
@@ -55,14 +59,14 @@ public class Initializer {
 		}
 		return personaId;
 	}
-	
+
 	public Long addIndirizzo(String comune, String via, Long idPersona, SessionFactory factory) {
 		Session session = factory.openSession();
 		Transaction tx = null;
 		Long personaId = null;
 		try {
-			Persona persona = (Persona)session.get(Persona.class, idPersona);
-			
+			Persona persona = (Persona) session.get(Persona.class, idPersona);
+
 			tx = session.beginTransaction();
 			Indirizzo indirizzo = new Indirizzo();
 			indirizzo.setComune(comune);

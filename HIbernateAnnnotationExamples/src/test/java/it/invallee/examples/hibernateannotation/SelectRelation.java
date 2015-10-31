@@ -109,4 +109,5 @@ public class SelectRelation {
 			System.out.println(persona.getIndirizzi());
 		}
 	}
+	
 }

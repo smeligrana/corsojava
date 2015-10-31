@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.BatchSize;
+
 @Entity
 @Table(name = "PERSONA")
 public class Persona {
@@ -25,6 +27,7 @@ public class Persona {
 	private String nome;
 	
 	@OneToMany(mappedBy="persona")
+	@BatchSize(size=10)
 	private Set<Indirizzo> indirizzi;
 
 	public Long getIdPersona() {
