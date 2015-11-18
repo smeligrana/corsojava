@@ -10,7 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.hibernate.criterion.Subqueries;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -54,6 +56,30 @@ public class SimpleSelect {
 		try {
 			tx = session.beginTransaction();
 			Criteria criteria = session.createCriteria(Persona.class);
+			List<Persona> persone = criteria.list();
+			for (Persona persona : persone) {
+				System.out.println(persona);
+			}
+			tx.commit();
+
+			Assert.assertEquals(3, persone.size());
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
+	
+	@Test
+	public void listPersonaCriteria() {
+		Session session = factory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			Criteria criteria = session.createCriteria(Persona.class);
+			criteria.add(Restrictions.ilike("cognome", "Meligrana", MatchMode.ANYWHERE));
 			List<Persona> persone = criteria.list();
 			for (Persona persona : persone) {
 				System.out.println(persona);

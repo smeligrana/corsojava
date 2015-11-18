@@ -5,7 +5,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.internal.SessionFactoryImpl;
 
+import it.invallee.examples.hibernateannotation.hb.DocumentoIdentita;
 import it.invallee.examples.hibernateannotation.hb.Indirizzo;
 import it.invallee.examples.hibernateannotation.hb.Persona;
 import it.invallee.examples.hibernateannotation.hb.TipoIndirizzo;
@@ -20,7 +22,8 @@ public class Initializer {
 				factory = new Configuration().configure()
 						// .addPackage("it.invallee.examples.hibernateannotation.hb")
 						.addAnnotatedClass(Persona.class).addAnnotatedClass(Indirizzo.class)
-						.addAnnotatedClass(TipoIndirizzo.class).buildSessionFactory();
+						.addAnnotatedClass(TipoIndirizzo.class).addAnnotatedClass(DocumentoIdentita.class)
+						.buildSessionFactory();
 			} catch (Throwable ex) {
 				System.err.println("Failed to create sessionFactory object." + ex);
 				throw new ExceptionInInitializerError(ex);
