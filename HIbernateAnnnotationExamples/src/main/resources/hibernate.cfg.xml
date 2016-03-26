@@ -26,7 +26,10 @@
         <property name="hibernate.connection.username">sa</property>
         <property name="hibernate.connection.password"></property>
         <property name="hibernate.connection.url">jdbc:hsqldb:mem:mymemdb</property>
+        <!-- 
         <property name="hibernate.dialect">org.hibernate.dialect.HSQLDialect</property>
+         -->
+        <property name="hibernate.dialect">it.invallee.examples.hibernateannotation.hb.CustomHSQLDialect</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
 

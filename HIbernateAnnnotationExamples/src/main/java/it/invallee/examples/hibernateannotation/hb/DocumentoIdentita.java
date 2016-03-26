@@ -47,6 +47,10 @@ public class DocumentoIdentita {
 	public void setDataRilascio(Date dataRilascio) {
 		this.dataRilascio = dataRilascio;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "DocumentoIdentita [id=" + id + ", numero=" + numero + ", dataRilascio=" + dataRilascio + "]";
+	}
 	
 }

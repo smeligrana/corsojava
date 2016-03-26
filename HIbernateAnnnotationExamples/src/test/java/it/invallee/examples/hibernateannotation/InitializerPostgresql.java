@@ -7,21 +7,20 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.internal.SessionFactoryImpl;
 
 import it.invallee.examples.hibernateannotation.hb.DocumentoIdentita;
 import it.invallee.examples.hibernateannotation.hb.Indirizzo;
 import it.invallee.examples.hibernateannotation.hb.Persona;
 import it.invallee.examples.hibernateannotation.hb.TipoIndirizzo;
 
-public class Initializer {
+public class InitializerPostgresql {
 	private static SessionFactory factory = null;
 
 	public SessionFactory setUp() {
 		if (factory == null) {
 			// SessionFactory factory = null;
 			try {
-				factory = new Configuration().configure()
+				factory = new Configuration().configure("postgres-hibernate.cfg.xml")
 						// .addPackage("it.invallee.examples.hibernateannotation.hb")
 						.addAnnotatedClass(Persona.class).addAnnotatedClass(Indirizzo.class)
 						.addAnnotatedClass(TipoIndirizzo.class).addAnnotatedClass(DocumentoIdentita.class)

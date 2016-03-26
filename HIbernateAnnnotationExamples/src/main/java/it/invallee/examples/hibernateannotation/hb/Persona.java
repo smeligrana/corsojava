@@ -9,11 +9,14 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.QueryHint;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Formula;
 
 @Entity @EntityListeners(PersonaListener.class)
 @Table(name = "PERSONA")
@@ -37,8 +40,12 @@ public class Persona {
 	private Set<Indirizzo> indirizzi;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id_documento_identita")
 	private DocumentoIdentita documentoIdentita;
-
+	
+	@Formula("(count(*) over())")
+	private Long count;
+	
 	public Long getIdPersona() {
 		return idPersona;
 	}
@@ -78,11 +85,29 @@ public class Persona {
 	protected void setCognomeNome(String cognomeNome){
 		this.cognomeNome = cognomeNome;
 	}
+	
+	public DocumentoIdentita getDocumentoIdentita() {
+		return documentoIdentita;
+	}
+
+	public void setDocumentoIdentita(DocumentoIdentita documentoIdentita) {
+		this.documentoIdentita = documentoIdentita;
+	}
+	
+	
+
+	public Long getCount() {
+		return count;
+	}
+
+	public void setCount(Long count) {
+		this.count = count;
+	}
 
 	@Override
 	public String toString() {
 		return "Persona [idPersona=" + idPersona + ", cognome=" + cognome
-				+ ", nome=" + nome + ", cognomeNome="+cognomeNome+"]";
+				+ ", nome=" + nome + ", cognomeNome="+cognomeNome+", count="+count+"]";
 	}
 	
 	
